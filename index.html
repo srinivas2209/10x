@@ -1,308 +1,59 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Top 10 Destinations — Advanced UI/UX Template</title>
-  <meta name="description" content="A modern, accessible template showcasing 10 tourist destinations with filters, search, and detailed modals.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome, Srinivas</title>
   <style>
-    :root{
-      --bg:#09121f; --card:#102238; --muted:#9bc9e8; --accent:#5cc7ff; --glass:rgba(92,199,255,0.08);
-      --radius:12px; --max-width:1200px; --gap:18px; font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;
+    :root {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #0f172a;
+      background: linear-gradient(180deg, #eef2ff 0%, #dbeafe 100%);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#061427 0%, #0b243b 100%);color:#e9f5ff}
-    a{color:var(--accent)}
-    .container{max-width:var(--max-width);margin:32px auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#5cc7ff,#4f63ff);display:flex;align-items:center;justify-content:center;font-weight:700}
-    h1{margin:0;font-size:1.6rem}
-    p.lead{color:var(--muted);margin:6px 0 0;font-size:0.95rem}
-
-    .controls{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
-    .search{flex:1;min-width:220px;background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:10px;display:flex;align-items:center;gap:8px}
-    .search input{flex:1;background:transparent;border:0;color:inherit;outline:none}
-    .select, .btn{background:var(--card);border:1px solid rgba(255,255,255,0.04);padding:10px 12px;border-radius:10px;color:inherit}
-    .btn{cursor:pointer}
-
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
-    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:640px){.grid{grid-template-columns:1fr}}
-
-    .card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:220px;background:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.45));display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(255,255,255,0.03);transition:transform .22s ease,box-shadow .22s}
-    .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.6)}
-    .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(.95) saturate(.95);}
-    .card .meta{position:relative;padding:14px;background:linear-gradient(0deg,rgba(5,18,37,0.82),transparent);backdrop-filter: blur(6px)}
-    .meta h3{margin:0;font-size:1.05rem}
-    .meta p{margin:6px 0 0;color:var(--muted);font-size:0.9rem}
-    .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(92,199,255,0.18);padding:6px 8px;border-radius:999px;font-size:0.8rem;margin-top:8px}
-
-    .controls .stats{margin-left:auto;display:flex;gap:8px;align-items:center;color:var(--muted)}
-
-    /* Modal */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px;z-index:60}
-    .modal[open]{display:flex}
-    .dialog{max-width:900px;width:100%;background:linear-gradient(180deg,#071526,#041226);border-radius:14px;box-shadow:0 20px 60px rgba(2,6,23,.6);overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
-    .dialog .content{display:grid;grid-template-columns:1fr 380px;gap:0}
-    @media (max-width:900px){.dialog .content{grid-template-columns:1fr}}
-    .detail-media{height:320px;background:#00121a}
-    .detail-body{padding:18px}
-    .close{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem}
-
-    footer{color:var(--muted);text-align:center;padding:28px 0}
-
-    /* accessibility focus */
-    :focus{outline:3px solid rgba(6,182,212,0.18);outline-offset:3px}
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .card {
+      width: min(100%, 720px);
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.16);
+      padding: 40px 32px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      line-height: 1.05;
+      color: #111827;
+    }
+    p {
+      margin: 18px 0 0;
+      color: #475569;
+      font-size: 1.05rem;
+      max-width: 32rem;
+      line-height: 1.7;
+    }
+    .highlight {
+      color: #2563eb;
+      font-weight: 700;
+    }
+    .footer {
+      margin-top: 32px;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">TD</div>
-        <div>
-          <h1>Top 10 Destinations</h1>
-          <p class="lead">A refined UI/UX template showcasing places, filters, and immersive details.</p>
-        </div>
-      </div>
-      <nav aria-label="primary">
-        <button class="btn" id="toggleTheme" aria-pressed="false">Toggle Theme</button>
-      </nav>
-    </header>
-
-    <div class="controls" role="region" aria-label="controls">
-      <div class="search" role="search">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.5"></circle></svg>
-        <input id="q" placeholder="Search destinations, e.g., 'waterfalls'" aria-label="Search destinations">
-      </div>
-
-      <select id="region" class="select" aria-label="Filter by region">
-        <option value="all">All regions</option>
-        <option value="europe">Europe</option>
-        <option value="asia">Asia</option>
-        <option value="americas">Americas</option>
-        <option value="africa">Africa</option>
-        <option value="oceania">Oceania</option>
-      </select>
-
-      <select id="sort" class="select" aria-label="Sort destinations">
-        <option value="featured">Featured</option>
-        <option value="name">Name</option>
-        <option value="popularity">Popularity</option>
-      </select>
-
-      <div class="stats" aria-hidden="false">
-        <div class="chip">10 places</div>
-      </div>
-    </div>
-
-    <main>
-      <section class="grid" id="list" aria-live="polite">
-        <!-- Cards inserted inline for simplicity -->
-        <article class="card" tabindex="0" data-region="europe" data-name="Santorini, Greece" data-pop="95" aria-labelledby="santorini">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" alt="White buildings on Santorini cliff at sunset">
-          <div class="meta">
-            <h3 id="santorini">Santorini, Greece</h3>
-            <p>Iconic caldera views, sunsets, and whitewashed architecture.</p>
-            <div class="chip">Europe • Aegean</div>
-          </div>
-        </article>
-
-        <article class="card" tabindex="0" data-region="asia" data-name="Kyoto, Japan" data-pop="90" aria-labelledby="kyoto">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1558980664-10e717f75a48?q=80&w=1200&auto=format&fit=crop" alt="Autumn leaves and temple in Kyoto">
-          <div class="meta">
-            <h3 id="kyoto">Kyoto, Japan</h3>
-            <p>Ancient temples, traditional tea houses, and seasonal beauty.</p>
-            <div class="chip">Asia • Kansai</div>
-          </div>
-        </article>
-
-        <article class="card" tabindex="0" data-region="americas" data-name="Machu Picchu, Peru" data-pop="88" aria-labelledby="machu">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1200&auto=format&fit=crop" alt="Machu Picchu ruins in the Andes">
-          <div class="meta">
-            <h3 id="machu">Machu Picchu, Peru</h3>
-            <p>Ancient Incan city perched high in the Andes.</p>
-            <div class="chip">Americas • Andes</div>
-          </div>
-        </article>
-
-        <article class="card" tabindex="0" data-region="asia" data-name="Bali, Indonesia" data-pop="92" aria-labelledby="bali">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=1200&auto=format&fit=crop" alt="Rice terraces in Bali at sunrise">
-          <div class="meta">
-            <h3 id="bali">Bali, Indonesia</h3>
-            <p>Beaches, rice terraces, and a vibrant cultural scene.</p>
-            <div class="chip">Asia • Bali</div>
-          </div>
-        </article>
-
-        <article class="card" tabindex="0" data-region="europe" data-name="Paris, France" data-pop="99" aria-labelledby="paris">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop" alt="Eiffel Tower view at dusk">
-          <div class="meta">
-            <h3 id="paris">Paris, France</h3>
-            <p>Timeless museums, cuisine, and urban romance.</p>
-            <div class="chip">Europe • Île-de-France</div>
-          </div>
-        </article>
-
-        <article class="card" tabindex="0" data-region="africa" data-name="Cape Town, South Africa" data-pop="85" aria-labelledby="capetown">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Table Mountain over Cape Town and coastline">
-          <div class="meta">
-            <h3 id="capetown">Cape Town, South Africa</h3>
-            <p>Dramatic landscapes, beaches, and vibrant culture.</p>
-            <div class="chip">Africa • Western Cape</div>
-          </div>
-        </article>
-
-        <article class="card" tabindex="0" data-region="americas" data-name="New York City, USA" data-pop="100" aria-labelledby="nyc">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1200&auto=format&fit=crop" alt="Manhattan skyline at night">
-          <div class="meta">
-            <h3 id="nyc">New York City, USA</h3>
-            <p>Iconic skyline, museums, neighborhoods, and culture.</p>
-            <div class="chip">Americas • USA</div>
-          </div>
-        </article>
-
-        <article class="card" tabindex="0" data-region="oceania" data-name="Sydney, Australia" data-pop="87" aria-labelledby="sydney">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e7b9?q=80&w=1200&auto=format&fit=crop" alt="Sydney Opera House by the harbor">
-          <div class="meta">
-            <h3 id="sydney">Sydney, Australia</h3>
-            <p>Harborfront landmarks, beaches, and cosmopolitan life.</p>
-            <div class="chip">Oceania • New South Wales</div>
-          </div>
-        </article>
-
-        <article class="card" tabindex="0" data-region="asia" data-name="Petra, Jordan" data-pop="76" aria-labelledby="petra">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=1200&auto=format&fit=crop" alt="Treasury at Petra carved into red rock">
-          <div class="meta">
-            <h3 id="petra">Petra, Jordan</h3>
-            <p>Rose-red city carved into cliffs and ancient trade routes.</p>
-            <div class="chip">Asia • Ma'an</div>
-          </div>
-        </article>
-
-        <article class="card" tabindex="0" data-region="americas" data-name="Banff, Canada" data-pop="82" aria-labelledby="banff">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1508264165352-258a6b15f3c2?q=80&w=1200&auto=format&fit=crop" alt="Turquoise lake in Banff surrounded by mountains">
-          <div class="meta">
-            <h3 id="banff">Banff, Canada</h3>
-            <p>Alpine lakes, wildlife, and outdoor adventure in the Rockies.</p>
-            <div class="chip">Americas • Alberta</div>
-          </div>
-        </article>
-
-      </section>
-    </main>
-  </div>
-
-  <div class="modal" role="dialog" aria-modal="true" id="modal">
-    <div class="dialog" role="document">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,0.02)">
-        <strong id="modalTitle">Place</strong>
-        <div>
-          <button class="close" id="favBtn" aria-pressed="false">♡ Save</button>
-          <button class="close" id="closeBtn">Close</button>
-        </div>
-      </div>
-      <div class="content">
-        <div>
-          <div class="detail-media" id="modalImg" aria-hidden="true"></div>
-          <div class="detail-body">
-            <p id="modalDesc" style="color:var(--muted)"></p>
-          </div>
-        </div>
-        <aside style="padding:18px;border-left:1px solid rgba(255,255,255,0.02)">
-          <h4>Quick facts</h4>
-          <ul id="facts" style="color:var(--muted);padding-left:18px"></ul>
-          <div style="margin-top:12px;color:var(--muted)">Map & logistics placeholder</div>
-        </aside>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    Built as an advanced UI/UX template — interactive, responsive, and accessible.
-  </footer>
-
-  <script>
-    // Lightweight interactivity: search, filter, sort, modal, favorites
-    const q = document.getElementById('q');
-    const region = document.getElementById('region');
-    const sort = document.getElementById('sort');
-    const list = document.getElementById('list');
-    const cards = Array.from(list.querySelectorAll('.card'));
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalImg = document.getElementById('modalImg');
-    const modalDesc = document.getElementById('modalDesc');
-    const facts = document.getElementById('facts');
-    const favBtn = document.getElementById('favBtn');
-
-    function render(filterText = '', filterRegion = 'all', sortBy='featured'){
-      let filtered = cards.filter(c=>{
-        const name = c.dataset.name.toLowerCase();
-        const region = c.dataset.region;
-        const matchesText = !filterText || name.includes(filterText.toLowerCase());
-        const matchesRegion = filterRegion === 'all' || region === filterRegion;
-        return matchesText && matchesRegion;
-      });
-      if(sortBy === 'name') filtered.sort((a,b)=> a.dataset.name.localeCompare(b.dataset.name));
-      if(sortBy === 'popularity') filtered.sort((a,b)=> b.dataset.pop - a.dataset.pop);
-      // clear
-      list.innerHTML = '';
-      filtered.forEach(c=>list.appendChild(c));
-    }
-
-    q.addEventListener('input', ()=> render(q.value, region.value, sort.value));
-    region.addEventListener('change', ()=> render(q.value, region.value, sort.value));
-    sort.addEventListener('change', ()=> render(q.value, region.value, sort.value));
-
-    // Card click / keyboard open
-    function openCard(card){
-      const title = card.dataset.name;
-      modalTitle.textContent = title;
-      modalDesc.textContent = card.querySelector('.meta p').textContent;
-      const img = card.querySelector('img').src;
-      modalImg.style.background = `url(${img}) center/cover no-repeat`;
-      facts.innerHTML = `
-        <li>Region: ${card.dataset.region}</li>
-        <li>Popularity: ${card.dataset.pop}</li>
-      `;
-      favBtn.setAttribute('aria-pressed', isFavorited(title));
-      modal.setAttribute('open','');
-      modal.querySelector('.dialog').focus();
-    }
-
-    list.addEventListener('click', e=>{
-      const card = e.target.closest('.card'); if(card) openCard(card);
-    });
-    list.addEventListener('keydown', e=>{ if(e.key==='Enter'){ const card=e.target.closest('.card'); if(card) openCard(card); } });
-
-    document.getElementById('closeBtn').addEventListener('click', ()=> modal.removeAttribute('open'));
-    modal.addEventListener('click', e=>{ if(e.target===modal) modal.removeAttribute('open') });
-    document.addEventListener('keydown', e=>{ if(e.key==='Escape') modal.removeAttribute('open') });
-
-    // Favorites
-    function favorites(){ try{return JSON.parse(localStorage.getItem('fav')||'[]')}catch(e){return[]} }
-    function saveFavorites(arr){ localStorage.setItem('fav', JSON.stringify(arr)) }
-    function isFavorited(name){ return favorites().includes(name) }
-    favBtn.addEventListener('click', ()=>{
-      const name = modalTitle.textContent; let f = favorites();
-      if(isFavorited(name)){ f = f.filter(x=>x!==name); favBtn.textContent='♡ Save'; favBtn.setAttribute('aria-pressed','false'); }
-      else{ f.push(name); favBtn.textContent='♥ Saved'; favBtn.setAttribute('aria-pressed','true'); }
-      saveFavorites(f);
-    });
-
-    // Simple theme toggle for demo
-    const toggle = document.getElementById('toggleTheme');
-    toggle.addEventListener('click', ()=>{
-      const pressed = toggle.getAttribute('aria-pressed') === 'true';
-      toggle.setAttribute('aria-pressed', String(!pressed));
-      document.body.style.background = pressed ? 'linear-gradient(180deg,#071025 0%, #071a2a 100%)' : 'linear-gradient(180deg,#f8fafc 0%, #e6eef8 100%)';
-      document.body.style.color = pressed ? '#e6eef8' : '#071022';
-    });
-
-    // initial render
-    render();
-  </script>
+  <section class="card">
+    <h1>Welcome, <span class="highlight">Srinivas</span>!</h1>
+    <p>You've arrived on a beautifully designed homepage crafted for a warm introduction. This page is a perfect starting point for showcasing your name, sharing a short greeting, and setting an inviting tone.</p>
+    <p class="footer">Customize this page further with your profile, favorite places, or a personal welcome message.</p>
+  </section>
 </body>
 </html>
